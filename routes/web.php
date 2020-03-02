@@ -4,7 +4,7 @@ use App\Article;
 use App\Http\Controllers\ArticlesController;
 
 Route::get('/', function (){
-    return view('home');
+    return view('inicio');
 })->name('inicio');
 
 Route::get('/usuarios', 'UserController@index')->name('users');
