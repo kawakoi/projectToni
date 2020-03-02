@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 class PastelController extends Controller
 {
+            /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
          $pasteles = ['tiramisu', 'brouny', 'croasan'];
 
@@ -16,4 +26,5 @@ class PastelController extends Controller
     {
         return view('pasteles.show', ['id' => $id]);
     }
+
 }

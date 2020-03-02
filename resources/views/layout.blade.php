@@ -50,6 +50,38 @@
                 <div class="col-4">
                     @section('sidebar')
                         <h2>Barra lateral</h2>
+                                            <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <!-- Authentication Links -->
+                        {{-- Si no estás logueado mostrará las funciones de login y registro --}}
+                        @guest
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+
+                        {{-- Y si no, mostrará los datos de usuario y un logout --}}
+                        @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endguest
+                    </ul>
                     @show
                 </div>
             </div>
